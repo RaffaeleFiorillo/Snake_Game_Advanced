@@ -18,8 +18,8 @@ class Snake:
 class Food:
     def __init__(self, snake_body_coo, world_size):
         self.coordinates = (randint(0, world_size-1), randint(0, world_size-1))
-        while self.coordinates in snake_body_coo:
-            self.coordinates = [(randint(0, world_size-1), randint(0, world_size-1))]
+        while self.coordinates in snake_body_coo and len(snake_body_coo) != world_size**2:
+            self.coordinates = (randint(0, world_size-1), randint(0, world_size-1))
 
 
 class World:
@@ -30,7 +30,7 @@ class World:
         self.cell_size = c_size
         self.SNAKE = Snake()
         self.FOOD = Food(self.SNAKE.body_coordinates, self.size)
-        self.make_snake_grow, self.last_food_coo = False, None
+        self.make_snake_grow, self.last_food_coo = False, []
 
     def move_snake(self, key=False):
         if key:
@@ -40,12 +40,13 @@ class World:
 
     def snake_growth(self):
         if self.SNAKE.should_grow:
-            self.last_food_coo = self.FOOD.coordinates
+            self.last_food_coo.append(self.FOOD.coordinates)
             self.FOOD = Food(self.SNAKE.body_coordinates, self.size)
             self.SNAKE.should_grow = False
-        if self.last_food_coo and self.SNAKE.body_coordinates[-1] == self.last_food_coo:
-            self.SNAKE.body_coordinates.append(self.last_food_coo)
-            self.last_food_coo = None
+        if self.last_food_coo and self.SNAKE.body_coordinates[-1] in self.last_food_coo:
+            new_body_coo = self.last_food_coo.index(self.SNAKE.body_coordinates[-1])
+            self.SNAKE.body_coordinates.append(new_body_coo)
+            self.last_food_coo.pop(new_body_coo)
 
     def verify_death_condition(self):
         for coo in self.SNAKE.body_coordinates[1:]:
@@ -73,6 +74,7 @@ class World:
         [pygame.draw.rect(self.screen, (0, 0, 0), (self.cell_size*i, self.cell_size*y, self.cell_size, self.cell_size))
          for y in range(self.size) for i in range(self.size)]
         self.draw_world_entity(self.SNAKE.body_coordinates[0], (0, 200, 200))  # drawing the head of the snake
-        [pygame.draw.rect(self.screen, (0, 255, 0), (self.cell_size*i, self.cell_size*y, self.cell_size, self.cell_size))
+        [pygame.draw.rect(self.screen, (0, 255, 0),
+                          (self.cell_size*i, self.cell_size*y, self.cell_size, self.cell_size), int(self.cell_size*0.1))
          for i, y in self.SNAKE.body_coordinates[1:]]
         self.draw_world_entity(self.FOOD.coordinates, (255, 255, 0))  # drawing the food

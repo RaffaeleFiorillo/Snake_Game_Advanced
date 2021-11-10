@@ -20,13 +20,18 @@ def keyboard_movement(world_i: World) -> None:
 
 
 def random_movement(world_i: World) -> None:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit()
     if random() > 0.2:
         world_i.move_snake(choice(DIRECTIONS))
 
 
 def hamiltonian_movement(world_i: World) -> None:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit()
     right_points = ((0, 0) if i==0 else (1, i) for i in range(0, world_i.size, 2))
-    # print(tuple(right_points))
     left_points = ((world_i.size - 1, i) for i in range(1, world_i.size, 2))
     up_points = ((0, world_i.size - 1), )
     down_points = tuple((world_i.size - 1, i) for i in range(0, world_i.size, 2))
@@ -45,6 +50,9 @@ def hamiltonian_movement(world_i: World) -> None:
 
 
 def hamiltonian_movement_simplified(world_i: World) -> None:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit()
     snake_head, direction = world_i.SNAKE.body_coordinates[0], None
     if snake_head == (0, 0) or (snake_head[0] == 1 and not snake_head[1] % 2):  # goes right
         direction = DIRECTIONS[1]
