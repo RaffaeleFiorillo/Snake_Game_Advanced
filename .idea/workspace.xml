@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="223c27e2-c5e2-4897-ab49-0918fc623c50" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auxiliar_functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/link_functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_classes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_entities.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_entities.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movement_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/movement_functions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
