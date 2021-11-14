@@ -5,10 +5,12 @@ import menu_classes as mc
 
 
 def main_menu(screen):
-    pass
+    buttons = []
+    menu = mc.Menu(screen, buttons, "main_menu.png")
+    menu.display_menu()
 
 
-def game(screen, movement_type=mf.hamiltonian_movement_simplified):
+def game(screen, movement_type=mf.keyboard_movement):
     world = ge.World(screen, af.WORLD_SIZE, af.CELL_SIZE)
     snake_moving_function = movement_type  # setting the snake to move according to parameter
     while True:

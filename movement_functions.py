@@ -49,7 +49,7 @@ def hamiltonian_movement(world_i: World) -> None:
     world_i.move_snake(direction)
 
 
-def hamiltonian_movement_simplified(world_i: World) -> None:
+def hamiltonian_simplified_movement(world_i: World) -> None:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()

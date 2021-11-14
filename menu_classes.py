@@ -92,18 +92,14 @@ class Menu(Basic_Input_Management):
         self.user_related_images = []
         self.active_code = 0
         self.screen = screen
-        self.current_frame = 0
         self.coord_effect = self.update_coord_effect()
 
     def draw_buttons(self):
-        for but in self.button_list:
-            but.draw(self.screen)
-        self.current_frame += 0.25
-        if self.current_frame > 3:
-            self.current_frame = 0
+        for button in self.button_list:
+            button.draw(self.screen)
 
     def update_coord_effect(self):
-        return self.button_list[self.active_code].x - 12, self.button_list[self.active_code].y - 12
+        return self.button_list[self.active_code].x, self.button_list[self.active_code].y
 
     def display_menu(self):
         while True:

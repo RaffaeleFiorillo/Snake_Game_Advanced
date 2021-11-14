@@ -2,8 +2,8 @@ import pygame
 
 pygame.font.init()
 
-WORLD_SIZE = 20
-CELL_SIZE = 20
+WORLD_SIZE = 24
+CELL_SIZE = 15
 SCREEN = pygame.display.set_mode((WORLD_SIZE * CELL_SIZE, WORLD_SIZE * CELL_SIZE))
 CLOCK = pygame.time.Clock()
 TEXT_FONT = pygame.font.SysFont('Times New Roman', 12)

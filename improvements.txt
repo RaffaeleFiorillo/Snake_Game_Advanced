@@ -1,0 +1,8 @@
+world should draw a black square only in the position where the last part of the snake was, in the previous frame.
+this would make the complexity of the world-drawing-algorithm go from quadratic to constant!
+
+note: for this solution to work, the world must be initially fully drawn.
+      mantain the initial implementation and compare it with optimized
+
+do the same for the snake's body. so that even when it grows it doesn't have to draw all the body parts, but
+only the one at the back of the head.
